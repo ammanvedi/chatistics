@@ -1,0 +1,5 @@
+node_modules/
+test/_chat.txt
+.DS_Store
+dist/
+.idea
