@@ -20,12 +20,7 @@ export class MessageGapStatisticsProcessor implements IStatisticsProcessor<Messa
         this.lastMessageTimestamp = thisTimestamp
     }
 
-
-
     result(): { name: string; data: MessageGapStatistic } {
-
-        console.log(this.gaps.length)
-
 
         return {
             data: {
