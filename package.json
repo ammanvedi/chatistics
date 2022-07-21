@@ -14,7 +14,7 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle --globals readline=readline",
     "dev": "microbundle watch",
     "test": "jest"
   },

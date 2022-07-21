@@ -1,6 +1,6 @@
-import {readChatEntry} from "./readChatEntry";
-import {MetadataProcessor} from "./MetadataProcessor";
-import {IChatEntryMetadata} from "./types";
+import {readChatEntry} from "../readChatEntry";
+import {MetadataProcessor} from "../MetadataProcessor";
+import {IChatEntryMetadata} from "../types";
 import {join} from 'path'
 import {NameSanitizerPreProcessor} from "./NameSanitizerPreProcessor";
 

@@ -4,8 +4,8 @@ export type AnalysisResult = {
 
 export interface IChatisticsConfig {
     path: string,
-    preProcessors: IChatEntryPreprocessor[],
-    statisticsProcessors: IStatisticsProcessor<any>[]
+    preProcessors?: IChatEntryPreprocessor[],
+    statisticsProcessors?: IStatisticsProcessor<any>[]
 }
 
 export type LineHandler = (s: string) => Promise<void>
@@ -31,4 +31,9 @@ export interface IStatisticsProcessor<StatResult> {
         name: string,
         data: StatResult
     }
+}
+
+export interface Average {
+    median: number,
+    mean: number,
 }

@@ -1,8 +1,14 @@
 import {AnalysisResult, IChatEntryPreprocessor, IChatisticsConfig, IStatisticsProcessor} from "./types";
 import {readChatEntry} from "./readChatEntry";
-import {MediaEntryExclusionPreProcessor} from "./MediaEntryExclusionPreProcessor";
-import {NameSanitizerPreProcessor} from "./NameSanitizerPreProcessor";
+import {MediaEntryExclusionPreProcessor} from "./PreProcessor/MediaEntryExclusionPreProcessor";
+import {NameSanitizerPreProcessor} from "./PreProcessor/NameSanitizerPreProcessor";
 import {MetadataProcessor} from "./MetadataProcessor";
+import {TotalMessageCountStatisticsProcessor} from "./StatisticsProcessor/TotalMessageCountStatisticsProcessor";
+import {DailyMessageCountStatisticsProcessor} from "./StatisticsProcessor/DailyMessageCountStatisticsProcessor";
+import {MessageTimeStatisticsProcessor} from "./StatisticsProcessor/MessageTimeStatisticsProcessor";
+import {PopularWordsStatisticsProcessor} from "./StatisticsProcessor/PopularWordsStatisticsProcessor";
+import {TotalCharacterCountStatisticsProcessor} from "./StatisticsProcessor/TotalCharacterCountStatisticsProcessor";
+import {MessageGapStatisticsProcessor} from "./StatisticsProcessor/MessageGapStatisticsProcessor";
 
 
 export class Chatistics {
@@ -15,10 +21,17 @@ export class Chatistics {
     }
 
     private static getDefaultStatisticsProcessors(): IStatisticsProcessor<any>[] {
-        return []
+        return [
+            new TotalMessageCountStatisticsProcessor(),
+            new DailyMessageCountStatisticsProcessor(),
+            new MessageTimeStatisticsProcessor(),
+            new PopularWordsStatisticsProcessor(),
+            new TotalCharacterCountStatisticsProcessor(),
+            new MessageGapStatisticsProcessor()
+        ]
     }
 
-    metadataProcessor = new MetadataProcessor()
+    private metadataProcessor = new MetadataProcessor()
 
     constructor(
         private config: IChatisticsConfig,
@@ -26,7 +39,7 @@ export class Chatistics {
         private statisticsProcessors = config.statisticsProcessors || Chatistics.getDefaultStatisticsProcessors(),
     ) {}
 
-    public async analyze(filePath: string): Promise<AnalysisResult> {
+    public async analyze(): Promise<AnalysisResult> {
 
         await readChatEntry(this.config.path, async line => {
             let metadata = this.metadataProcessor.process(line);

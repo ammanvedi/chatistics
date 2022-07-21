@@ -1,13 +1,11 @@
 # Chatistics
 
 Chatistics is a tool that takes in a Whatsapp chat export text file and 
-outputs statistics from the shat data.
+outputs statistics from the chat data.
 
 The statistics/metadata output are;
 
-- Date range of chat logs
 - Total message count
-- Number of participants
 - Daily message count graph
 - Histogram of daily messaging time
 - Comparison of number of messages sent per participant
@@ -15,7 +13,8 @@ The statistics/metadata output are;
 - Most common word per participant
 - Most common emoji ranking
 - Most common emoji per participant
-- Counting of specific token's occurrence in messages
+- Total character/word/byte count
+
 - Average time between messages (Mode, Mean, Median)
 
 Other features

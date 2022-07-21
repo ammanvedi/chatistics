@@ -1,4 +1,4 @@
-import {IChatEntryMetadata, IChatEntryPreprocessor} from "./types";
+import {IChatEntryMetadata, IChatEntryPreprocessor} from "../types";
 
 export class NameSanitizerPreProcessor implements IChatEntryPreprocessor {
 
@@ -6,7 +6,7 @@ export class NameSanitizerPreProcessor implements IChatEntryPreprocessor {
 
         return {
             ...chatEntry,
-            participantName: chatEntry.participantName.replace(/[^a-zA-Z-]/g, '')
+            participantName: chatEntry.participantName.replace(/[^a-zA-Z0-9-]/g, '')
         };
     }
 

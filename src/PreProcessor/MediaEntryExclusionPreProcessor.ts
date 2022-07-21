@@ -1,4 +1,4 @@
-import {IChatEntryMetadata, IChatEntryPreprocessor} from "./types";
+import {IChatEntryMetadata, IChatEntryPreprocessor} from "../types";
 
 export class MediaEntryExclusionPreProcessor implements IChatEntryPreprocessor {
 

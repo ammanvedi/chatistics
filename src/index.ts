@@ -1,3 +1,1 @@
-export const x = () => {
-    console.log('sdadad')
-}
+export { Chatistics } from './chatistics'
